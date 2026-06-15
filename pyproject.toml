@@ -85,7 +85,6 @@ packages = ["mitiphy"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "data/attck" = "mitiphy/data/attck"
-"data/fixtures" = "mitiphy/data/fixtures"
 
 [tool.ruff]
 line-length = 100
