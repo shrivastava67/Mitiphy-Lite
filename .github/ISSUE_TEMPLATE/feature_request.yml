@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest a new capability for Mitiphy
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the analyst workflow or recon gap.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Which profile does this belong in?
+      description: Lite must stay lean. Heavy capabilities belong in Default or Full.
+      options:
+        - Lite
+        - Default
+        - Full
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

@@ -1,0 +1,28 @@
+# Normalize line endings to LF on commit; checkout in native form.
+* text=auto eol=lf
+
+# Shell scripts must stay LF even on Windows checkout.
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Windows scripts stay CRLF.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binaries.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.gguf binary
+*.bin binary
+*.sqlite binary
+*.db binary
+
+# Linguist hints — keep language stats honest.
+data/attck/*.json linguist-vendored=true
+web/static/*.html linguist-detectable=true
+tests/* linguist-detectable=true

@@ -1,0 +1,70 @@
+name: Bug report
+description: Report unexpected behavior in Mitiphy
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report. For security issues, please use the [Security Advisories](https://github.com/shrivastava67/mitiphy/security/advisories) instead.
+
+  - type: input
+    id: version
+    attributes:
+      label: Mitiphy version
+      description: Output of `mitiphy --version`
+      placeholder: "mitiphy 0.1.0 (profile=lite)"
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.11.4"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. `mitiphy run example.com`
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / output
+      description: Relevant output. Run with `--verbose` if applicable. Redact any sensitive data.
+      render: shell
+
+  - type: textarea
+    id: doctor
+    attributes:
+      label: "`mitiphy doctor` output"
+      description: Paste the output of `mitiphy doctor`.
+      render: shell
