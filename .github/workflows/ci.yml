@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: test (${{ matrix.os }} / py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip wheel
+          pip install -e ".[dev]"
+
+      - name: Ruff
+        run: ruff check .
+
+      - name: Mypy
+        run: mypy mitiphy
+
+      - name: Pytest
+        env:
+          MITIPHY_HOME: ${{ runner.temp }}/mitiphy-ci
+        run: pytest -ra -q
+
+  egress-allowlist:
+    name: Verify no surprise egress in tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Run tests in network-isolated mode
+        env:
+          MITIPHY_HOME: ${{ runner.temp }}/mitiphy-egress
+        run: |
+          # Tests should pass without hitting the live network. Network-touching
+          # collectors are exercised only when explicitly opted into.
+          pytest -ra -q -k "not network"

@@ -1,0 +1,54 @@
+{
+  "version": "mitiphy-bundle-2026-06-06",
+  "source": "MITRE ATT&CK Enterprise (subset)",
+  "techniques": [
+    {
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "tactic": "Initial Access",
+      "indicators": ["subdomain", "exposed_service", "kev_match", "epss_score"]
+    },
+    {
+      "id": "T1133",
+      "name": "External Remote Services",
+      "tactic": "Initial Access",
+      "indicators": ["nameserver", "rdap_summary", "exposed_service"]
+    },
+    {
+      "id": "T1566",
+      "name": "Phishing",
+      "tactic": "Initial Access",
+      "indicators": ["malicious_url", "phishing_domain", "brand_lookalike"]
+    },
+    {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "tactic": "Initial Access",
+      "indicators": ["breach", "credential_leak", "password_match"]
+    },
+    {
+      "id": "T1589",
+      "name": "Gather Victim Identity Information",
+      "tactic": "Reconnaissance",
+      "indicators": ["email", "phone", "username", "person"]
+    },
+    {
+      "id": "T1590",
+      "name": "Gather Victim Network Information",
+      "tactic": "Reconnaissance",
+      "indicators": ["dns_a", "dns_aaaa", "dns_mx", "dns_ns", "subdomain", "nameserver"]
+    },
+    {
+      "id": "T1592",
+      "name": "Gather Victim Host Information",
+      "tactic": "Reconnaissance",
+      "indicators": ["archive_snapshot", "archive_entry", "tech_fingerprint"]
+    },
+    {
+      "id": "T1596",
+      "name": "Search Open Technical Databases",
+      "tactic": "Reconnaissance",
+      "indicators": ["subdomain", "rdap_summary", "osv_vuln", "kev_match"]
+    }
+  ]
+}
